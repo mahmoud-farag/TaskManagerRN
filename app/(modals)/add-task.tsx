@@ -1,5 +1,5 @@
 import { PriorityButton } from "@/src/components";
-import { FILTERS } from "@/src/constants";
+import { COLORS, FILTERS } from "@/src/constants";
 import { useTask } from "@/src/hooks/TaskContext";
 import { ITask, TaskType } from "@/src/types";
 import { Ionicons } from "@expo/vector-icons";
@@ -42,7 +42,7 @@ const AddTaskModal = () => {
 
   return (
     <SafeAreaView
-      className="flex-1 bg-[#ff4d6d]  rounded-t-[50px] "
+      className="flex-1 bg-primary  rounded-t-[50px] "
       // edges={["top"]}
       style={{ top: insets.top + 30 }}
     >
@@ -100,7 +100,7 @@ const AddTaskModal = () => {
                     color={item.iconColor}
                   />
                   <Text
-                    className={`text-xl  ${priority === item.value ? "text-[#ff4d6d]" : "text-slate-200"}`}
+                    className={`text-xl  ${priority === item.value ? "text-primary" : "text-slate-200"}`}
                   >
                     {item.label}
                   </Text>
@@ -115,7 +115,7 @@ const AddTaskModal = () => {
             className="border border-slate-200 bg-slate-200 rounded-full p-2"
             name="checkmark-sharp"
             size={30}
-            color="#ff4d6d"
+            color={COLORS.primary}
           />
         </TouchableOpacity>
       </View>

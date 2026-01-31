@@ -1,3 +1,5 @@
+import { Alert } from "react-native";
+
 export const formatDate = (isoDate: Date) => {
   if (!isoDate) return null;
 
@@ -8,4 +10,23 @@ export const formatDate = (isoDate: Date) => {
   const yyyy = date.getFullYear();
 
   return `${mm}/${dd}/${yyyy}`;
+};
+
+export const handleDeleteAlert = ({
+  title,
+  description,
+  onAction,
+}: {
+  title: string;
+  description: string;
+  onAction: () => void;
+}) => {
+  Alert.alert(title, description, [
+    { text: "Cancel", style: "cancel" },
+    {
+      text: "Delete",
+      style: "destructive",
+      onPress: onAction,
+    },
+  ]);
 };

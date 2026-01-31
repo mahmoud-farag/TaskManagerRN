@@ -7,6 +7,8 @@ import { useState } from "react";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { COLORS } from "@/src/constants";
+
 const TaskListScreen = () => {
   //* States
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
@@ -15,20 +17,15 @@ const TaskListScreen = () => {
   const { tasks } = useTask();
 
   //* Derived State
-  const filteredTasks =
-    selectedFilter === "all" ? tasks : tasks.filter((task) => task.type === selectedFilter);
-
-  //* Handlers
-  function handleTaskFilter(type: string) {
-    setSelectedFilter(type);
-  }
-
+  const filteredTasks: ITask[] = selectedFilter === "all" ? tasks : tasks.filter((task) => task.type === selectedFilter);
   const activeTasks: number = tasks.filter((task) => !task.completed).length;
+
+
 
   return (
     <View className="flex-1 bg-white">
       <LinearGradient
-        colors={["#FFF6F2", "#FDE2DD", "#ff4d6d"]}
+        colors={["#FFF6F2", "#FDE2DD", COLORS.primary]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         className="absolute top-0 left-0 right-0 h-[70%]"
@@ -50,18 +47,18 @@ const TaskListScreen = () => {
           <View className="flex-1 px-5 pt-4">
             <View className="mb-8">
               <TaskFilters
-                handleTaskFilter={handleTaskFilter}
+                setSelectedFilter={setSelectedFilter}
                 selectedFilter={selectedFilter}
               />
             </View>
 
-              <BottomSheetFlatList
-                data={filteredTasks}
-                keyExtractor={(item: ITask) => item.id}
-                renderItem={({ item }: { item: ITask }) => <Task task={item} />}
-                contentContainerStyle={{ paddingBottom: 100 }}
-                showsVerticalScrollIndicator={false}
-              />
+            <BottomSheetFlatList
+              data={filteredTasks}
+              keyExtractor={(item: ITask) => item.id}
+              renderItem={({ item }: { item: ITask }) => <Task task={item} />}
+              contentContainerStyle={{ paddingBottom: 100 }}
+              showsVerticalScrollIndicator={false}
+            />
           </View>
         </BottomSheet>
       </SafeAreaView>

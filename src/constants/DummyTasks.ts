@@ -8,7 +8,6 @@ const DUMMY_TASKS: ITask[] = [
       "This is a sample task. Swipe left to delete it or add your own tasks.",
     type: "medium",
     completed: false,
-    dueTime: "9:00 AM",
     createdAt: new Date(),
   },
 ];

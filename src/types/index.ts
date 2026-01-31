@@ -14,7 +14,6 @@ export interface ITask {
   description?: string;
   type: TaskType;
   completed: boolean;
-  dueTime?: string;
   createdAt: Date;
 }
 

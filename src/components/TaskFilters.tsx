@@ -3,11 +3,11 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { FILTERS } from "../constants";
 
 interface Props {
-  handleTaskFilter: (type: string) => void;
+  setSelectedFilter: React.Dispatch<React.SetStateAction<string>>;
   selectedFilter: string;
 }
 
-const TaskFilters = ({ handleTaskFilter, selectedFilter }: Props) => {
+const TaskFilters = ({ setSelectedFilter, selectedFilter }: Props) => {
   return (
     <View className="flex flex-row gap-5 justify-center ">
       {FILTERS.map((item) => {
@@ -15,10 +15,10 @@ const TaskFilters = ({ handleTaskFilter, selectedFilter }: Props) => {
         return (
           <TouchableOpacity
             key={item.value}
-            onPress={() => handleTaskFilter(item.value)}
+            onPress={() => setSelectedFilter(item.value)}
           >
             <View
-              className={` px-4 py-2 rounded-3xl flex flex-row items-center gap-1 ${isActive ? "bg-[#ff4d6d]" : " border border-slate-300"}`}
+              className={` px-4 py-2 rounded-3xl flex flex-row items-center gap-1 ${isActive ? "bg-primary" : " border border-slate-300"}`}
             >
               {item.value !== "all" && (
                 <Ionicons
