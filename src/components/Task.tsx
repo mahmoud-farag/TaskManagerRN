@@ -1,6 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
 import ExpoCheckbox from "expo-checkbox";
-import { useState } from "react";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable";
 import { useTask } from "../hooks/TaskContext";
@@ -9,9 +8,7 @@ import { formatDate } from "../utils";
 import TaskType from "./TaskType";
 
 const Task = ({ task }: { task: ITask }) => {
-  const [isCompleted, setIsCompleted] = useState(false);
-
-  const { removeTask } = useTask();
+  const { removeTask, updateTask } = useTask();
 
   //* Handlers
   const handleOnTaskSwipe = () => {
@@ -38,6 +35,10 @@ const Task = ({ task }: { task: ITask }) => {
     ]);
   }
 
+  const handleOnTaskComplete = (newValue: boolean) => {
+    updateTask(task.id, { ...task, completed: newValue });
+  };
+
   return (
     <ReanimatedSwipeable
       renderRightActions={handleOnTaskSwipe}
@@ -46,21 +47,27 @@ const Task = ({ task }: { task: ITask }) => {
       <View className="flex-row items-center gap-4 border border-slate-200 rounded-2xl p-4 mb-3 ">
         <ExpoCheckbox
           className="h-6 w-6 rounded border-2 border-blue-500"
-          value={isCompleted}
-          onValueChange={(newValue) => setIsCompleted(!isCompleted)}
-          color={isCompleted ? "#ff4d6d" : undefined}
+          value={task.completed}
+          onValueChange={handleOnTaskComplete}
+          color={task.completed ? "#ff4d6d" : undefined}
         />
 
         <View className="flex-1">
-          <Text className="text-xl font-semibold text-slate-800">
+
+          <Text className={`text-xl font-semibold ${task.completed ? "text-slate-400 line-through" : "text-slate-800"}`}>
             {task.title}
           </Text>
+
           <View className="flex flex-row gap-1 items-center ">
             <TaskType type={task.type} />
           </View>
+
         </View>
 
-        <Text className="text-md text-slate-600">
+        <Text
+          className={`text-md ${task.completed ? "text-slate-400" : "text-slate-600"
+            }`}
+        >
           {formatDate(task.createdAt)}
         </Text>
       </View>

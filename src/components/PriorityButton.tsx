@@ -5,6 +5,7 @@ interface props {
   onPress: () => void;
   isActive: boolean;
 }
+
 const PriorityButton = ({ children, onPress, isActive }: props) => {
   return (
     <View

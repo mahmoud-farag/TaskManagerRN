@@ -30,4 +30,5 @@ export interface ITaskContext {
   tasks: ITask[];
   addTask: (task: ITask) => void;
   removeTask: (id: string) => void;
+  updateTask: (id: string, updatedTask: ITask) => void;
 }
