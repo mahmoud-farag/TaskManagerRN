@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 export type TaskType = 'high' | 'medium' | 'low';
 
 export type IconName = React.ComponentProps<typeof Ionicons>['name'];
-export type IconsMapType = {[key: string]: {name: IconName, color: string}}
+export type ICONS_MAPType = {[key: string]: {name: IconName, color: string}}
 
 export interface ITask {
   id: string;
@@ -14,3 +14,12 @@ export interface ITask {
   dueTime: string;
   createdAt: string;
 };
+
+export type FilterType = {
+  label: string;
+  value: string;
+  iconName?: IconName;
+  iconColor?: string;
+  iconSize?: number;
+}
+

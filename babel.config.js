@@ -3,7 +3,8 @@ module.exports = function (api) {
   return {
     presets: [
       ["babel-preset-expo", { jsxImportSource: "nativewind" }],
-      "nativewind/babel", // <--- This MUST be in presets for v4
+      "nativewind/babel",
     ],
+    plugins: ["react-native-reanimated/plugin"],
   };
 };

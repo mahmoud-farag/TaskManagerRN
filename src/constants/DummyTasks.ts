@@ -1,11 +1,11 @@
-// src/constants/dummyTasks.ts
+// src/constants/DUMMY_TASKS.ts
 
 import { ITask } from "../types";
 
 
 
 
-const dummyTasks: ITask[] = [
+const DUMMY_TASKS: ITask[] = [
   {
     id: '1',
     title: 'Food Delivery App',
@@ -109,4 +109,4 @@ const dummyTasks: ITask[] = [
 
 ];
 
-export default dummyTasks;
+export default DUMMY_TASKS;
