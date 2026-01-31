@@ -1,4 +1,3 @@
-export { default as dummyTasks } from './dummyTasks';
-export { default as iconsMap } from './iconsMap';
-
+export { default as DUMMY_TASKS } from './DummyTasks';
+export { default as FILTERS } from './Filters';
 
