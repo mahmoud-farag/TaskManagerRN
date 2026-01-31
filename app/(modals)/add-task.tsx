@@ -1,5 +1,7 @@
 import { PriorityButton } from "@/src/components";
-import { FILTERS } from "@/src/constants";
+import { COLORS, FILTERS } from "@/src/constants";
+import { useTask } from "@/src/hooks/TaskContext";
+import { ITask, TaskType } from "@/src/types";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
@@ -10,14 +12,37 @@ import {
 } from "react-native-safe-area-context";
 
 const AddTaskModal = () => {
+  //* States
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState<TaskType | null>(null);
   const router = useRouter();
   const insets = useSafeAreaInsets();
 
-  const [priority, setPriority] = useState<string | null>(null);
+  //*Custom Hooks
+  const { addTask } = useTask();
+
+  //* Handlers
+  function handleSubmit() {
+    if (!title || !description || !priority) return;
+
+    const newTask: ITask = {
+      id: Date.now().toString(),
+      title,
+      description,
+      type: priority,
+      completed: false,
+      createdAt: new Date(),
+    };
+
+    addTask(newTask);
+
+    router.back();
+  }
 
   return (
     <SafeAreaView
-      className="flex-1 bg-[#ff4d6d]  rounded-t-[50px] "
+      className="flex-1 bg-primary  rounded-t-[50px] "
       // edges={["top"]}
       style={{ top: insets.top + 30 }}
     >
@@ -37,6 +62,8 @@ const AddTaskModal = () => {
         <View className="w-full gap-4">
           <View className="">
             <TextInput
+              value={title}
+              onChangeText={(newValue) => setTitle(newValue)}
               placeholder="Enter Task Name"
               className="text-slate-100 placeholder:text-slate-300 border-b border-slate-300 text-lg pb-3 px-3"
             />
@@ -48,6 +75,8 @@ const AddTaskModal = () => {
               placeholder="Enter Task Description"
               placeholderTextColor="rgba(255,255,255,0.6)"
               multiline
+              value={description}
+              onChangeText={(newValue) => setDescription(newValue)}
               numberOfLines={3}
               textAlignVertical="top"
               className="text-slate-100 placeholder:text-slate-300 border-b border-slate-300 text-lg pb-3 px-3 "
@@ -62,26 +91,31 @@ const AddTaskModal = () => {
               item.value !== "all" && (
                 <PriorityButton
                   key={item.value}
-                  onPress={() => setPriority(item.value)}
+                  isActive={priority === item.value}
+                  onPress={() => setPriority(item.value as TaskType)}
                 >
                   <Ionicons
                     name={item.iconName}
                     size={item.iconSize}
                     color={item.iconColor}
                   />
-                  <Text className="text-xl text-slate-200">{item.label}</Text>
+                  <Text
+                    className={`text-xl  ${priority === item.value ? "text-primary" : "text-slate-200"}`}
+                  >
+                    {item.label}
+                  </Text>
                 </PriorityButton>
               ),
           )}
         </View>
 
         {/* Submit button */}
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={handleSubmit}>
           <Ionicons
             className="border border-slate-200 bg-slate-200 rounded-full p-2"
             name="checkmark-sharp"
             size={30}
-            color="#ff4d6d"
+            color={COLORS.primary}
           />
         </TouchableOpacity>
       </View>

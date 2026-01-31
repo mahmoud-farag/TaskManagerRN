@@ -1,21 +1,42 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { FILTERS } from "../constants";
 
-const TaskFilters = () => {
+interface Props {
+  setSelectedFilter: React.Dispatch<React.SetStateAction<string>>;
+  selectedFilter: string;
+}
+
+const TaskFilters = ({ setSelectedFilter, selectedFilter }: Props) => {
   return (
     <View className="flex flex-row gap-5 justify-center ">
-      {
-        FILTERS.map(item => (
+      {FILTERS.map((item) => {
+        const isActive = selectedFilter === item.value;
+        return (
+          <TouchableOpacity
+            key={item.value}
+            onPress={() => setSelectedFilter(item.value)}
+          >
+            <View
+              className={` px-4 py-2 rounded-3xl flex flex-row items-center gap-1 ${isActive ? "bg-primary" : " border border-slate-300"}`}
+            >
+              {item.value !== "all" && (
+                <Ionicons
+                  name={item.iconName}
+                  size={item.iconSize}
+                  color={item.iconColor}
+                />
+              )}
 
-          <View key={item.value} className="border border-slate-300   px-3 py-1 rounded-3xl flex flex-row items-center gap-1">
-
-            {item.value !== 'all' && <Ionicons name={item.iconName} size={item.iconSize} color={item.iconColor} />}
-
-            <Text className="font-semibold">{item.label}</Text>
-          </View>
-        ))
-      }
+              <Text
+                className={`font-semibold ${isActive ? "text-white" : "text-slate-800"}`}
+              >
+                {item.label}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };

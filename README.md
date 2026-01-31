@@ -1,50 +1,48 @@
-# Welcome to your Expo app 👋
+# Task Manager App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> **Important Note**: This is my **first ever** React Native project! I've built this to learn the framework and ecosystem.
 
-## Get started
+A simple Task Manager application built with **React Native (Expo)**, **NativeWind**, and **TypeScript**.
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- **Task List**: View all your tasks in a clean, scrollable list.
+- **Task Details**: Tap on any task to view full details (description, priority, dates).
+- **Filtering**: Filter tasks by status (All, High, Medium, Low).
+- **Add Tasks**: Easily create new tasks with title, description, and priority.
+- **Task Management**: Mark tasks as completed or delete them with a swipe.
+- **Swipe Actions**: Swipe left on a task to delete it.
 
-2. Start the app
+## Installation
 
-   ```bash
-   npx expo start
-   ```
+1.  **Clone the repository**.
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-In the output, you'll find options to open the app in a
+## Running the App
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Start the development server:
 
 ```bash
-npm run reset-project
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- Scan the QR code with **Expo Go** (Android/iOS) to run on your device.
+- Press `a` for Android Emulator.
+- Press `i` for iOS Simulator.
 
-## Learn more
+## Design & Attribution
 
-To learn more about developing your project with Expo, look at the following resources:
+The UI/UX of this application is inspired by the beautiful [Task Management App Design](https://dribbble.com/shots/25731016-Task-Management-App-Design) on Dribbble.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Tech Stack & Libraries
 
-## Join the community
+This project utilizes the following key libraries:
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **[NativeWind](https://www.nativewind.dev/)**: For styling components using Tailwind CSS classes directly in React Native.
+- **[Expo Router](https://docs.expo.dev/router/introduction/)**: For file-based navigation (managing Screens, Tabs, and Modals).
+- **[@gorhom/bottom-sheet](https://ui.gorhom.io/components/bottom-sheet/)**: A performant and interactive bottom sheet component used for the task list.
+- **[Expo Linear Gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)**: For creating the gradient aesthetics.
+- **[Expo Vector Icons](https://icons.expo.fyi/)**: For the application icons (Ionicons).
