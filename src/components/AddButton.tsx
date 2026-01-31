@@ -1,13 +1,11 @@
-import { useRouter } from 'expo-router';
+import { useRouter } from "expo-router";
 import { Text, TouchableOpacity } from "react-native";
 
 const AddButton = () => {
   const router = useRouter();
 
-
   function handleOnPress() {
-
-    router.push('/(modals)/add-task');
+    router.push("/(modals)/add-task");
   }
 
   return (
@@ -18,7 +16,7 @@ const AddButton = () => {
     >
       <Text className="text-white text-4xl font-light mb-1">+</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 export default AddButton;

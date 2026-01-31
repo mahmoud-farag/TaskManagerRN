@@ -8,7 +8,7 @@ const TaskCounter = ({ count }: { count: number }) => {
       </Text>
 
       <View className="size-48 border-8 border-pink-100 rounded-full bg-white items-center justify-center shadow">
-        <Text className="text-4xl font-bold text-slate-900">{count}</Text>
+        <Text className="text-4xl font-bold text-[#ff4d6d]">{count}</Text>
         <Text className="text-slate-500 mt-3">Active Tasks</Text>
       </View>
     </View>
