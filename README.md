@@ -1,6 +1,6 @@
 # Task Manager App
 
-> **Important Note**: This is my **first ever** React Native project! I've built this to learn the framework and ecosystem.
+**Important Note**: This is my **first ever** React Native project! I've built this to learn the framework and ecosystem.
 
 A simple Task Manager application built with **React Native (Expo)**, **NativeWind**, and **TypeScript**.
 
