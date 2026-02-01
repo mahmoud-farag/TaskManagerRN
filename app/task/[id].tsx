@@ -41,7 +41,7 @@ const TaskDetailsScreen = () => {
 
         <View className="flex-row items-center gap-3 mb-6 mt-2">
           <StatusBadge completed={task?.completed ?? false} />
-          <PriorityBadge type={task?.type ?? "low"} />
+          <PriorityBadge type={task?.priority ?? "low"} />
         </View>
 
         {/* Date Info */}

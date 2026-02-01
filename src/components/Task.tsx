@@ -66,7 +66,7 @@ const Task = ({ task }: { task: ITask }) => {
           </Text>
 
           <View className="flex flex-row gap-1 items-center ">
-            <TaskType type={task.type} />
+            <TaskType type={task.priority} />
           </View>
         </View>
 
