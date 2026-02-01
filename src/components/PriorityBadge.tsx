@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
-import { TaskType } from "../types";
+import { Priority } from "../types";
 
-const PriorityBadge = ({ type }: { type: TaskType }) => {
+const PriorityBadge = ({ type }: { type: Priority }) => {
   const colors = {
     high: { bg: "bg-red-50", border: "border-red-200", text: "text-red-700" },
     medium: {

@@ -6,7 +6,7 @@ const DUMMY_TASKS: ITask[] = [
     title: "Welcome to TaskFlow 👋",
     description:
       "This is a sample task. Swipe left to delete it or add your own tasks.",
-    type: "medium",
+    priority: "medium",
     completed: false,
     createdAt: new Date(),
   },

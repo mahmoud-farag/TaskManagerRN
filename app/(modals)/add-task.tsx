@@ -1,7 +1,7 @@
 import { PriorityButton } from "@/src/components";
 import { COLORS, FILTERS } from "@/src/constants";
 import { useTask } from "@/src/hooks/TaskContext";
-import { ITask, TaskType } from "@/src/types";
+import { ITask, Priority } from "@/src/types";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
@@ -15,7 +15,7 @@ const AddTaskModal = () => {
   //* States
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState<TaskType | null>(null);
+  const [priority, setPriority] = useState<Priority | null>(null);
   const router = useRouter();
   const insets = useSafeAreaInsets();
 
@@ -30,7 +30,7 @@ const AddTaskModal = () => {
       id: Date.now().toString(),
       title,
       description,
-      type: priority,
+      priority,
       completed: false,
       createdAt: new Date(),
     };
@@ -92,7 +92,7 @@ const AddTaskModal = () => {
                 <PriorityButton
                   key={item.value}
                   isActive={priority === item.value}
-                  onPress={() => setPriority(item.value as TaskType)}
+                  onPress={() => setPriority(item.value as Priority)}
                 >
                   <Ionicons
                     name={item.iconName}

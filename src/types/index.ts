@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 
-export type TaskType = "high" | "medium" | "low";
+export type Priority = "high" | "medium" | "low";
 export type AllType = "all";
 
 export type IconName = React.ComponentProps<typeof Ionicons>["name"];
@@ -12,14 +12,14 @@ export interface ITask {
   id: string;
   title: string;
   description?: string;
-  type: TaskType;
+  priority: Priority;
   completed: boolean;
   createdAt: Date;
 }
 
 export type FilterType = {
   label: string;
-  value: TaskType | AllType;
+  value: Priority | AllType;
   iconName?: IconName;
   iconColor?: string;
   iconSize?: number;

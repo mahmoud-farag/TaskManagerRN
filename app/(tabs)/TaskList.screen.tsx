@@ -17,10 +17,8 @@ const TaskListScreen = () => {
   const { tasks } = useTask();
 
   //* Derived State
-  const filteredTasks: ITask[] = selectedFilter === "all" ? tasks : tasks.filter((task) => task.type === selectedFilter);
+  const filteredTasks: ITask[] = selectedFilter === "all" ? tasks : tasks.filter((task) => task.priority === selectedFilter);
   const activeTasks: number = tasks.filter((task) => !task.completed).length;
-
-
 
   return (
     <View className="flex-1 bg-white">
@@ -28,7 +26,7 @@ const TaskListScreen = () => {
         colors={["#FFF6F2", "#FDE2DD", COLORS.primary]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        className="absolute top-0 left-0 right-0 h-[70%]"
+        className="absolute top-0 left-0 right-0 h-[100%]"
       />
 
       <SafeAreaView className="flex-1">
